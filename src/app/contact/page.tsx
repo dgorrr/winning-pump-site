@@ -2,195 +2,308 @@
 
 import { FormEvent, useState } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
+import { company } from "@/data/company";
+import Link from "next/link";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 800));
-    setLoading(false);
-    setSubmitted(true);
+
+
+  e.preventDefault();
+
+  setLoading(true);
+
+
+  const formData = new FormData(e.currentTarget);
+
+
+  const data = {
+
+    name: formData.get("name"),
+
+    email: formData.get("email"),
+
+    company: formData.get("company"),
+
+    subject: formData.get("subject"),
+
+    message: formData.get("message"),
+
+  };
+
+
+
+  try {
+
+
+    const response = await fetch(
+      "/api/send-email",
+      {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify(data),
+
+      }
+    );
+
+
+
+    if(response.ok){
+
+      setSubmitted(true);
+
+    } else {
+
+      alert("Failed to send message");
+
+    }
+
+
+  } catch(error){
+
+
+    console.error(error);
+
+    alert("Something went wrong");
+
+
   }
 
+
+  setLoading(false);
+
+
+}
+
   return (
-    <div className="py-10 lg:py-14">
-      <div className="container-main">
-        <Breadcrumb
-          items={[
-            { label: "Home", href: "/" },
-            { label: "Contact" },
-          ]}
-        />
+    <div className="bg-slate-50 min-h-screen">
 
-        <div className="mb-10">
-          <h1 className="section-heading">Contact Us</h1>
-          <p className="section-subheading">
-            Get in touch with our export sales team
-          </p>
+      {/* 顶部轻微层次 */}
+      <div className="bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-10 pb-14">
+          <Breadcrumb
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Contact" },
+            ]}
+          />
+
+          <div className="mt-8 max-w-3xl">
+            <div className="text-xs font-bold uppercase tracking-[0.3em] text-orange-600 mb-4">
+              Global Support
+            </div>
+
+            <h1 className="text-5xl lg:text-6xl font-black tracking-tight text-slate-900">
+              Contact Winning Pumps
+            </h1>
+
+            <p className="mt-5 text-lg text-slate-500 leading-relaxed max-w-2xl">
+              Connect with our engineering team for pump solutions, OEM cooperation,
+              and global technical support.
+            </p>
+          </div>
         </div>
+      </div>
 
-        <div className="grid gap-10 lg:grid-cols-5">
-          {/* Contact info */}
-          <div className="space-y-6 lg:col-span-2">
-            <div className="card p-6">
-              <h2 className="text-lg font-semibold text-steel-900">
-                Winning Pumps Co., Ltd.
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-14">
+
+        <div className="grid gap-8 lg:grid-cols-5">
+
+          {/* LEFT INFORMATION */}
+          <div className="lg:col-span-2 space-y-5">
+
+            {/* COMPANY CARD */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-7 shadow-sm">
+              <h2 className="text-xl font-bold text-slate-900">
+                {company.legalName}
               </h2>
-              <p className="mt-1 text-sm text-brand-600">胜利水泵制造有限公司</p>
-              <ul className="mt-6 space-y-4 text-sm text-steel-600">
-                <li className="flex gap-3">
-                  <svg className="mt-0.5 h-5 w-5 flex-shrink-0 text-brand-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  <span>
-                    No. 888 Industrial Park Road
-                    <br />
-                    Ningbo, Zhejiang Province
-                    <br />
-                    China 315000
-                  </span>
-                </li>
-                <li className="flex gap-3">
-                  <svg className="mt-0.5 h-5 w-5 flex-shrink-0 text-brand-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                  <div>
-                    <a href="tel:+86-574-8888-8888" className="hover:text-brand-600">
-                      +86 574 8888 8888
-                    </a>
-                    <p className="text-xs text-steel-400">Mon–Sat, 8:00–18:00 (GMT+8)</p>
-                  </div>
-                </li>
-                <li className="flex gap-3">
-                  <svg className="mt-0.5 h-5 w-5 flex-shrink-0 text-brand-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                  <div>
-                    <a href="mailto:sales@winningpumps.com" className="hover:text-brand-600">
-                      sales@winningpumps.com
-                    </a>
-                    <p className="text-xs text-steel-400">Export inquiries</p>
-                  </div>
-                </li>
-                <li className="flex gap-3">
-                  <svg className="mt-0.5 h-5 w-5 flex-shrink-0 text-brand-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                  </svg>
-                  <span>WhatsApp: +86 138 0000 8888</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="card p-6">
-              <h3 className="font-semibold text-steel-900">Business Hours</h3>
-              <dl className="mt-4 space-y-2 text-sm">
-                <div className="flex justify-between">
-                  <dt className="text-steel-500">Monday – Friday</dt>
-                  <dd className="font-medium text-steel-900">8:00 – 18:00</dd>
-                </div>
-                <div className="flex justify-between">
-                  <dt className="text-steel-500">Saturday</dt>
-                  <dd className="font-medium text-steel-900">9:00 – 15:00</dd>
-                </div>
-                <div className="flex justify-between">
-                  <dt className="text-steel-500">Sunday</dt>
-                  <dd className="font-medium text-steel-900">Closed</dd>
-                </div>
-                <div className="flex justify-between border-t border-steel-100 pt-2">
-                  <dt className="text-steel-500">Timezone</dt>
-                  <dd className="font-medium text-steel-900">GMT+8 (CST)</dd>
-                </div>
-              </dl>
-            </div>
-
-            <div className="rounded-lg bg-brand-900 p-6 text-white">
-              <h3 className="font-semibold">Need a Quote?</h3>
-              <p className="mt-2 text-sm text-brand-100">
-                For product pricing and bulk orders, please use our RFQ form for faster processing.
+              <p className="mt-1.5 text-sm text-orange-600 font-medium">
+                {company.tagline}
               </p>
-              <a href="/rfq" className="btn-accent mt-4 inline-block">
-                Go to RFQ Form
-              </a>
+
+              <div className="mt-6 space-y-5 text-sm text-slate-600">
+                <div className="flex gap-3">
+                  <span className="text-orange-500 mt-0.5 shrink-0">📍</span>
+                  <p className="leading-relaxed">
+                    {company.location.address},<br />
+                    {company.location.city}, {company.location.province},<br />
+                    {company.location.country} {company.location.postalCode}
+                  </p>
+                </div>
+
+                <div className="flex gap-3">
+                  <span className="text-orange-500 mt-0.5 shrink-0">☎</span>
+                  <div>
+                    <p className="font-medium text-slate-800">{company.contact.phone}</p>
+                    <p className="text-xs text-slate-400 mt-0.5">Mon–Sat, 8:00–17:00 (GMT+8)</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-3">
+                  <span className="text-orange-500 mt-0.5 shrink-0">✉</span>
+                  <div>
+                    <p className="font-medium text-slate-800">{company.contact.email}</p>
+                    <p className="text-xs text-slate-400 mt-0.5">Export inquiries</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            {/* BUSINESS HOURS */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-7 shadow-sm">
+              <h3 className="font-bold text-slate-900">Business Hours</h3>
+              <div className="mt-5 space-y-3 text-sm">
+                <div className="flex justify-between">
+                  <span className="text-slate-500">Monday – Friday</span>
+                  <span className="font-medium text-slate-800">8:00 – 17:00</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-500">Saturday</span>
+                  <span className="font-medium text-slate-800">8:00 – 17:00</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-500">Sunday</span>
+                  <span className="font-medium text-slate-800">Closed</span>
+                </div>
+                <div className="flex justify-between border-t border-slate-100 pt-3">
+                  <span className="text-slate-500">Timezone</span>
+                  <span className="font-medium text-slate-800">GMT+8 (CST)</span>
+                </div>
+              </div>
+            </div>
+
+            {/* RFQ CARD */}
+            <div className="rounded-2xl bg-[#0B1016] p-7 text-white">
+              <h3 className="text-lg font-bold">Need a Quote?</h3>
+              <p className="mt-3 text-sm leading-relaxed text-slate-300">
+                For product pricing, technical specifications, and bulk orders,
+                contact our engineering team directly.
+              </p>
+              <Link
+                href="/products?action=rfq#rfq"
+                className="inline-flex mt-5 rounded-lg bg-orange-500 px-5 py-2.5 text-sm font-bold text-white hover:bg-orange-600 transition"
+              >
+                Request A Quote
+              </Link>
             </div>
           </div>
 
-          {/* Contact form */}
+          {/* FORM AREA */}
           <div className="lg:col-span-3">
             {submitted ? (
-              <div className="card p-10 text-center">
-                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
+              <div className="bg-white rounded-2xl border border-slate-200 p-12 text-center shadow-sm h-full flex flex-col items-center justify-center">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
                   <svg className="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h2 className="mt-4 text-2xl font-bold text-steel-900">Message Sent</h2>
-                <p className="mt-2 text-steel-600">
-                  Thank you for contacting us. We will get back to you shortly.
+                <h2 className="mt-5 text-3xl font-black text-slate-900">Message Sent</h2>
+                <p className="mt-3 text-slate-500">
+                  Thank you for contacting Winning Pumps. Our team will reply shortly.
                 </p>
                 <button
                   type="button"
                   onClick={() => setSubmitted(false)}
-                  className="btn-secondary mt-6"
+                  className="mt-8 rounded-lg border border-slate-300 px-6 py-3 text-sm font-semibold hover:bg-slate-50"
                 >
                   Send Another Message
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="card p-6 sm:p-8">
-                <h2 className="mb-6 text-lg font-semibold text-steel-900">
-                  Send Us a Message
-                </h2>
-                <div className="grid gap-6 sm:grid-cols-2">
+              <form
+                onSubmit={handleSubmit}
+                className="bg-white rounded-2xl border border-slate-200 p-8 lg:p-10 shadow-sm"
+              >
+                <div className="mb-8">
+                  <div className="text-xs uppercase tracking-[0.25em] font-bold text-orange-600">
+                    Inquiry
+                  </div>
+                  <h2 className="mt-3 text-2xl font-black text-slate-900">
+                    Send Us A Message
+                  </h2>
+                </div>
+
+                <div className="grid gap-5 sm:grid-cols-2">
                   <div>
-                    <label htmlFor="name" className="label-field">
+                    <label className="block text-sm font-medium text-slate-700 mb-1.5">
                       Name <span className="text-red-500">*</span>
                     </label>
-                    <input type="text" id="name" name="name" required className="input-field" />
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/30 focus:border-orange-500"
+                    />
                   </div>
+
                   <div>
-                    <label htmlFor="email" className="label-field">
+                    <label className="block text-sm font-medium text-slate-700 mb-1.5">
                       Email <span className="text-red-500">*</span>
                     </label>
-                    <input type="email" id="email" name="email" required className="input-field" />
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/30 focus:border-orange-500"
+                    />
                   </div>
+
                   <div>
-                    <label htmlFor="company" className="label-field">
+                    <label className="block text-sm font-medium text-slate-700 mb-1.5">
                       Company
                     </label>
-                    <input type="text" id="company" name="company" className="input-field" />
+                    <input
+                      type="text"
+                      name="company"
+                      className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/30 focus:border-orange-500"
+                    />
                   </div>
+
                   <div>
-                    <label htmlFor="subject" className="label-field">
+                    <label className="block text-sm font-medium text-slate-700 mb-1.5">
                       Subject <span className="text-red-500">*</span>
                     </label>
-                    <select id="subject" name="subject" required className="input-field">
+                    <select
+                      name="subject"
+                      required
+                      className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/30 focus:border-orange-500"
+                    >
                       <option value="">Select...</option>
-                      <option value="general">General Inquiry</option>
-                      <option value="product">Product Information</option>
-                      <option value="oem">OEM / ODM Partnership</option>
-                      <option value="after-sales">After-Sales Support</option>
-                      <option value="visit">Factory Visit Request</option>
+                      <option>Product Information</option>
+                      <option>Quotation Request</option>
+                      <option>OEM / ODM Partnership</option>
+                      <option>Factory Visit</option>
+                      <option>After Sales Support</option>
                     </select>
                   </div>
                 </div>
-                <div className="mt-6">
-                  <label htmlFor="message" className="label-field">
+
+                <div className="mt-5">
+                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
                     Message <span className="text-red-500">*</span>
                   </label>
                   <textarea
-                    id="message"
                     name="message"
-                    required
                     rows={6}
-                    className="input-field resize-y"
-                    placeholder="How can we help you?"
+                    required
+                    className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/30 focus:border-orange-500 resize-y"
+                    placeholder="Tell us about your requirements..."
                   />
                 </div>
-                <button type="submit" disabled={loading} className="btn-primary mt-6">
+
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="mt-7 rounded-lg bg-orange-500 px-8 py-3 text-sm font-bold text-white hover:bg-orange-600 transition disabled:opacity-60"
+                >
                   {loading ? "Sending..." : "Send Message"}
                 </button>
               </form>
@@ -198,19 +311,54 @@ export default function ContactPage() {
           </div>
         </div>
 
-        {/* Map placeholder */}
-        <div className="mt-10 overflow-hidden rounded-lg border border-steel-200">
-          <div className="flex h-64 items-center justify-center bg-gradient-to-br from-steel-100 to-brand-50 sm:h-80">
-            <div className="text-center">
-              <svg className="mx-auto h-12 w-12 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              <p className="mt-3 font-medium text-steel-700">Ningbo, Zhejiang, China</p>
-              <p className="text-sm text-steel-500">Industrial Park · 50,000 m² Factory</p>
+        {/* FACTORY LOCATION */}
+        <div className="mt-12 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+          <div className="grid lg:grid-cols-2">
+            <div className="p-10 lg:p-12">
+              <div className="text-xs font-bold uppercase tracking-[0.25em] text-orange-600">
+                Manufacturing Base
+              </div>
+
+              <h2 className="mt-4 text-3xl font-black text-slate-900">
+                Yangjiang Factory
+              </h2>
+
+              <p className="mt-4 leading-relaxed text-slate-500 max-w-md">
+               Based in Yangjiang city, Guangdong province, our
+  manufacturing facility specializes in
+  stainless steel pump production and
+  precision engineering.
+              </p>
+
+              <div className="mt-8 grid grid-cols-2 gap-6">
+                <div>
+                  <div className="text-3xl font-black text-slate-900">{company.facts.manufacturingExperience}</div>
+                  <div className="text-xs uppercase tracking-wider text-slate-500 mt-1">
+                    Years Experience
+                  </div>
+                </div>
+                <div>
+                  <div className="text-3xl font-black text-slate-900">{company.facts.facilityArea}</div>
+                  <div className="text-xs uppercase tracking-wider text-slate-500 mt-1">
+                    Factory Area
+                  </div>
+                </div>
+              </div>
             </div>
+
+           <div className="min-h-[300px] border-l border-slate-200">
+  <iframe
+    title="Winning Pumps Yangjiang Factory"
+    src="https://maps.google.com/maps?q=21.920333,112.064742&z=17&output=embed"
+    className="w-full h-full min-h-[300px] border-0"
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+    allowFullScreen
+  />
+</div>
           </div>
         </div>
+
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Suspense, FormEvent, useState, useEffect } from "react";
@@ -7,10 +8,12 @@ import { products } from "@/data/products";
 
 function RFQForm() {
   const searchParams = useSearchParams();
-  const preselectedProduct = searchParams.get("preselected") ?? "";
-  const matchedProduct = products.find((p) => p.slug === preselectedProduct);
+  const preselectedProduct = searchParams.get("product") ?? searchParams.get("preselected") ?? "";
+  const matchedProduct = products.find((p) => p.id === preselectedProduct);
 
   const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
   
   // 💥 状态管理：安全防空初始化，确保绝对不会报 undefined
   const [formData, setFormData] = useState({
@@ -29,10 +32,10 @@ function RFQForm() {
       setFormData(prev => ({
         ...prev,
         productId: matchedProduct.id,
-        requirements: `Inquiry for ${matchedProduct.name} (${matchedProduct.model || "Standard"}). Required Flow: ${matchedProduct.flowRange}, Head: ${matchedProduct.headRange}.`
+        requirements: `Inquiry for ${matchedProduct.name} (${matchedProduct.model || "Standard"}). Required Flow: ${matchedProduct.flow}, Head: ${matchedProduct.head}.`
       }));
     }
-  }, [preselectedProduct]);
+  }, [matchedProduct]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -42,47 +45,55 @@ function RFQForm() {
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
+    setError("");
 
     // 安全查找当前选中的产品
     const currentProduct = products.find((p) => p.id === formData.productId);
     const productName = currentProduct ? currentProduct.name : "Industrial Water Pump";
     const productModel = currentProduct?.model ? ` (${currentProduct.model})` : "";
 
-    let identityLine = "";
-    let actionRequest = "";
-    
-    if (formData.buyerType === "distributor") {
-      identityLine = "🏢 Buyer Type: Wholesaler / Distributor (Looking for OEM & Bulk Price)";
-      actionRequest = "Please send us your latest Product Catalog, Price Matrix, and MOQ terms.";
-    } else if (formData.buyerType === "contractor") {
-      identityLine = "🏗️ Buyer Type: Project Contractor / End-User (Looking for Technical Support)";
-      actionRequest = "Please provide the official Quotation, Lead Time, and full Technical Datasheets.";
-    } else {
-      identityLine = "💼 Buyer Type: General Inquiry";
-      actionRequest = "Please contact me regarding the following requirements.";
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: `${formData.buyerType}; ${formData.country}; ${formData.phone}`,
+          subject: `RFQ: ${productName}${productModel}`,
+          message: formData.requirements,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Unable to send RFQ");
+      }
+
+      setSubmitted(true);
+    } catch (submissionError) {
+      console.error(submissionError);
+      setError("We could not send your RFQ. Please try again or contact our team directly.");
+    } finally {
+      setLoading(false);
     }
+  }
 
-    const waNumber = "8657488888888"; // 替换为 Winning Pumps 真实的官方接收号码
-    const waMessage = 
-      `🔥 [New RFQ Received - Winning Pumps Global]\n\n` +
-      `Hello, I just submitted an official RFQ on your website:\n\n` +
-      `📌 [Product Interest]\n` +
-      `- Model: ${productName}${productModel}\n\n` +
-      `👤 [Contact Profile]\n` +
-      `- Contact Person: ${formData.name}\n` +
-      `- Business Email: ${formData.email}\n` +
-      `- Phone/WhatsApp: ${formData.phone}\n` +
-      `- Country/Region: ${formData.country}\n` +
-      `${identityLine}\n\n` +
-      `📝 [Detailed Requirements]\n` +
-      `"${formData.requirements}"\n\n` +
-      `🎯 [Action Required]\n` +
-      `${actionRequest}\n\n` +
-      `Thank you! Looking forward to your prompt response.`;
-
-    const whatsappUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`;
-    window.open(whatsappUrl, "_blank");
-    setLoading(false);
+  if (submitted) {
+    return (
+      <div className="rounded-2xl border border-steel-200 bg-white p-10 text-center shadow-sm">
+        <h2 className="text-2xl font-black text-steel-900">RFQ Sent</h2>
+        <p className="mt-3 text-sm leading-relaxed text-steel-500">
+          Thank you. Our team has received your request and will reply by email.
+        </p>
+        <button
+          type="button"
+          onClick={() => setSubmitted(false)}
+          className="mt-6 rounded-xl border border-steel-300 px-5 py-3 text-sm font-semibold text-steel-700 transition hover:bg-steel-50"
+        >
+          Send Another RFQ
+        </button>
+      </div>
+    );
   }
 
   return (
@@ -159,7 +170,7 @@ function RFQForm() {
               setFormData(prev => ({
                 ...prev,
                 productId: pId,
-                requirements: prod ? `Inquiry for ${prod.name} (${prod.model || "Standard"}). Required Flow: ${prod.flowRange}, Head: ${prod.headRange}.` : ""
+                requirements: prod ? `Inquiry for ${prod.name} (${prod.model || "Standard"}). Required Flow: ${prod.flow}, Head: ${prod.head}.` : ""
               }));
             }}
             className="mt-1.5 w-full rounded-xl border border-steel-200 px-4 py-3 text-sm focus:border-brand-500 focus:outline-none bg-steel-50/50 font-medium"
@@ -203,12 +214,13 @@ function RFQForm() {
       </div>
 
       <div className="pt-2">
+        {error && <p className="mb-3 text-sm text-red-600">{error}</p>}
         <button
           type="submit"
           disabled={loading}
           className="w-full rounded-xl bg-brand-600 py-4 text-sm font-bold text-white shadow-lg shadow-brand-100 hover:bg-brand-700 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
         >
-          {loading ? "Processing RFQ..." : "Submit Inquiry & Contact Factory via WhatsApp"}
+          {loading ? "Sending RFQ..." : "Submit RFQ"}
         </button>
       </div>
     </form>

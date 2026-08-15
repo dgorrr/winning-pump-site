@@ -732,8 +732,6 @@ export const products: Product[] = [
   image: "/images/products/wb400.png"
 },
 
-
-,
 // ==================== WQ 系列（污水切割/潜污泵） ====================
 {
   id: "wq-qg",
@@ -935,7 +933,6 @@ export const pumpCategories = [
   'End Suction / Ground Pumps',
   'Sewage & Drainage Pumps',
 ];
-
 
 export const applicationCategories = [
   'Building Water Supply & Boosting',

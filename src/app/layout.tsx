@@ -10,27 +10,44 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.winningpump.com"),
+  applicationName: "Winning Pumps",
   title: {
     default: "Winning Pumps | Professional Water Pump Manufacturer",
     template: "%s | Winning Pumps",
   },
   description:
-    "Winning Pumps (胜利水泵) is a leading Chinese manufacturer of submersible, centrifugal, and booster pumps for global B2B clients. OEM/ODM available.",
+    "Winning Pumps is a China-based manufacturer of stainless steel centrifugal, submersible, booster, and industrial water pumps for global B2B buyers. OEM and ODM support available.",
   keywords: [
-    "water pump",
+    "water pump manufacturer",
+    "stainless steel centrifugal pump",
     "submersible pump",
-    "centrifugal pump",
     "booster pump",
+    "industrial water pump",
     "China pump manufacturer",
-    "B2B pumps",
+    "OEM pump manufacturer",
   ],
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: "Winning Pumps",
+    title: "Winning Pumps | Professional Water Pump Manufacturer",
+    description:
+      "China-based manufacturer of stainless steel centrifugal, submersible, booster, and industrial water pumps for global B2B buyers.",
+    locale: "en_US",
+    images: [{ url: "/images/hero-carousel-1.png", alt: "Winning Pumps manufacturing facility" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Winning Pumps | Professional Water Pump Manufacturer",
+    description: "China-based manufacturer of industrial water pumps for global B2B buyers.",
+    images: ["/images/hero-carousel-1.png"],
+  },
+  robots: { index: true, follow: true },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={inter.variable}>
       <body className="flex min-h-screen flex-col font-sans">

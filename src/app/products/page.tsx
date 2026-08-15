@@ -76,32 +76,58 @@ function ProductsContent() {
     return matchCategory && matchApplication && matchSearch;
   });
 
-  // 提交 RFQ 询盘到海外核心通道 WhatsApp
-  const handleInquirySubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!buyerName || !buyerEmail) {
-      alert("Please fill in your Name and Email to secure factory quotation.");
-      return;
-    }
-    const waNumber = "8657488888888";
-    const finalMsg = `*🚨 NEW GLOBAL SOURCING INQUIRY *\n\n*Buyer Name:* ${buyerName}\n*Buyer Email:* ${buyerEmail}\n\n*Message/Specs:* \n${inquiryText}`;
-    window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(finalMsg)}`, '_blank');
-  };
+// 提交 RFQ 询盘到邮箱
+const handleInquirySubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-  return (
-    <div className="bg-slate-50/50 min-h-screen">
+  if (!buyerName || !buyerEmail) {
+    alert("Please fill in your Name and Email.");
+    return;
+  }
+
+  try {
+    const res = await fetch("/api/send-email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: buyerName,
+        email: buyerEmail,
+        company: "",
+        subject: "Factory Quote Request",
+        message: inquiryText,
+      }),
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to send inquiry");
+    }
+
+    alert("Thank you. Your inquiry has been sent successfully.");
+
+    setBuyerName("");
+    setBuyerEmail("");
+    setInquiryText("");
+
+  } catch (error) {
+    console.error(error);
+    alert("Something went wrong. Please try again.");
+  }
+};  return (
+    <div className="bg-slate-50/50 min-h-screen pt-20">
       <div className="max-w-7xl mx-auto px-6 py-12">
         
         {/* 顶部高端大厂风头部 */}
         <div className="mb-10">
           <span className="text-xs font-mono font-bold tracking-widest text-brand-600 uppercase bg-brand-50 px-2.5 py-1 rounded">
-            Global Procurement Hub
+            INDUSTRIAL PUMP SOLUTIONS
           </span>
-          <h1 className="text-3xl font-black tracking-tight text-slate-900 mt-3 sm:text-4xl" style={{ color: 'initial' }}>
-            Industrial Catalog Matrix
+          <h1 className="text-5xl font-black tracking-tight text-slate-900 mt-3 sm:text-4xl" style={{ color: 'initial' }}>
+            Explore Our Pump Solutions
           </h1>
           <p className="text-slate-500 mt-1.5 text-sm max-w-2xl">
-            Filter through our engineering-grade fluid transfer systems. Every single model supports custom voltages, customized materials (SS316, Bronze), and direct OEM industrial manufacturing distribution.
+            Engineered pump solutions for industrial, commercial, and custom OEM applications.
           </p>
         </div>
 
@@ -109,7 +135,7 @@ function ProductsContent() {
         <div className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm mb-10 space-y-6">
           {/* 搜索框 */}
           <div>
-            <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Search Model or Keyword</label>
+            <label className="block text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Search Model or Keyword</label>
             <input
               type="text"
               placeholder="e.g., WB, GZA, CDL, Vertical Multistage..."
@@ -122,7 +148,7 @@ function ProductsContent() {
           {/* 泵类大分类筛选（第一层） */}
           <div>
             <div className="flex justify-between items-center mb-2">
-              <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider">Product Divisions</label>
+              <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider">Product Divisions</label>
               {selectedCategory !== 'All' && (
                 <button onClick={() => setSelectedCategory('All')} className="text-xs text-brand-600 font-bold hover:underline">Reset</button>
               )}
@@ -151,7 +177,7 @@ function ProductsContent() {
           {/* 应用场景筛选（第二层） */}
           <div>
             <div className="flex justify-between items-center mb-2">
-              <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider">Application Scenarios</label>
+              <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider">Application Scenarios</label>
               {selectedApplication !== 'All' && (
                 <button onClick={() => setSelectedApplication('All')} className="text-xs text-brand-600 font-bold hover:underline">Reset</button>
               )}
@@ -201,68 +227,83 @@ function ProductsContent() {
           <div className="grid lg:grid-cols-5">
             <div className="lg:col-span-2 bg-gradient-to-br from-slate-900 to-slate-950 p-8 lg:p-10 text-white flex flex-col justify-between">
               <div className="space-y-4">
-                <span className="text-[10px] font-mono font-bold tracking-widest text-brand-400 uppercase bg-white/10 px-2 py-0.5 rounded">
-                  B2B RFQ Control Center
+                <span className="text-xs font-mono font-bold tracking-widest text-brand-400 uppercase bg-white/10 px-3 py-1 rounded">
+                  FACTORY DIRECT QUOTATION
                 </span>
-                <h2 className="text-2xl font-black tracking-tight text-white">
-                  Request Factory-Direct Price Sheets
+                <h2 className="text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight">
+                  Request a Factory Quote
                 </h2>
-                <p className="text-xs text-slate-400 leading-relaxed">
-                  Fill out this engineering inquiry matrix. Our international engineering department will coordinate voltage, hydraulic curves, and delivery logs to provide an official corporate quote within 12 hours.
+                <p className="text-base lg:text-lg text-slate-300 leading-relaxed">
+                  Submit your pump requirements and our engineering team will provide the suitable model selection, technical information, and quotation.
                 </p>
               </div>
 
-              <div className="mt-10 pt-6 border-t border-slate-800 space-y-3 text-[11px] font-mono text-slate-400">
-                <p className="flex items-center gap-2">✓ 100% Hydraulic Performance Test Before Despatch</p>
-                <p className="flex items-center gap-2">✓ Complete Third-Party SGS/ISO Quality Validation</p>
-                <p className="flex items-center gap-2">✓ Tailored Voltage Configurations For Global Grids</p>
+              <div className="mt-10 pt-6 border-t border-slate-800 space-y-5 text-sm font-medium text-slate-300">
+                <p className="flex items-center gap-2">✓ Engineering Support Before Purchase</p>
+                <p className="flex items-center gap-2">✓ Product Selection Based on Your Application</p>
+                <p className="flex items-center gap-2">✓  OEM / ODM Manufacturing Available</p>
               </div>
             </div>
 
             <form onSubmit={handleInquirySubmit} className="lg:col-span-3 p-8 lg:p-10 space-y-5 bg-white">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Contact Name *</label>
+                  <label className="block text-xm font-bold text-slate-500 uppercase tracking-wider mb-1.5">Contact Name *</label>
                   <input
                     type="text"
                     required
                     placeholder="e.g., John Smith"
                     value={buyerName}
                     onChange={(e) => setBuyerName(e.target.value)}
-                    className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5 text-xs focus:border-brand-500 focus:bg-white focus:outline-none transition-all"
+                    className="w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-xs focus:border-brand-500 focus:bg-white focus:outline-none transition-all"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Corporate Email *</label>
+                  <label className="block text-xm font-bold text-slate-500 uppercase tracking-wider mb-1.5">Contact Email *</label>
                   <input
                     type="email"
                     required
                     placeholder="e.g., purchasing@company.com"
                     value={buyerEmail}
                     onChange={(e) => setBuyerEmail(e.target.value)}
-                    className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5 text-xs focus:border-brand-500 focus:bg-white focus:outline-none transition-all"
+                    className="w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-xs focus:border-brand-500 focus:bg-white focus:outline-none transition-all"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Technical Specification Requirement / Inquiry Message</label>
+                <label className="block text-xm font-bold text-slate-500 uppercase tracking-wider mb-1.5">Technical Specification Requirement / Inquiry Message</label>
                 <textarea
                   rows={5}
                   placeholder="Tell us about your project requirement, required flow rate (m³/h), head pressure (m), medium temperature or specific models..."
                   value={inquiryText}
                   onChange={(e) => setInquiryText(e.target.value)}
-                  className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5 text-xs font-mono focus:border-brand-500 focus:bg-white focus:outline-none transition-all leading-relaxed"
+                  className="
+w-full 
+rounded-lg 
+border 
+border-slate-200 
+bg-slate-50 
+px-4 
+py-3 
+text-sm 
+font-mono 
+focus:border-brand-500 
+focus:bg-white 
+focus:outline-none 
+transition-all 
+leading-relaxed
+"
                 />
               </div>
 
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full rounded-xl bg-brand-600 py-3.5 text-center text-xs font-bold tracking-wider uppercase text-white shadow-md hover:bg-brand-700 transition-all"
+                  className="w-full rounded-xl bg-brand-600 py-3.5 text-center text-sm font-bold tracking-wider uppercase text-white shadow-md hover:bg-brand-700 transition-all"
                   style={{ color: '#FFFFFF', backgroundColor: '#EA580C' }}
                 >
-                  Secure Direct Factory Quotation via WhatsApp
+                  Request Factory Quote
                 </button>
               </div>
             </form>

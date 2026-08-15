@@ -1,38 +1,100 @@
 export const company = {
-  legalName: "Winning Pumps Co., Ltd.",
-  legalNameZh: "宁波胜利水泵制造有限公司",
-  founded: 1998,
+  brandName: "Winning Pumps",
+  legalName: "Guangdong Yongli Pump Industry Co., Ltd.",
+  legalNameZh: "广东永力泵业有限公司",
+  founded: 1994,
   location: {
-    address: "No. 1688 Yinzhou Industrial Avenue, Yinzhou District",
-    city: "Ningbo",
-    province: "Zhejiang Province",
+    address: "Longtoushan Industrial Zone, Beiguan Town, Yangdong District",
+    city: "Yangjiang",
+    province: "Guangdong Province",
     country: "China",
-    postalCode: "315104",
+    postalCode: "529932",
   },
   contact: {
-    phone: "+86 574 8826 6800",
-    fax: "+86 574 8826 6801",
-    email: "export@winningpumps.com",
-    whatsapp: "+86 138 0588 2680",
+    phone: "+86-0662-8886888",
+    email: "globalmarketing@wpump.cn",
   },
-  tagline: "Industrial Water Pump Manufacturer · Export-Oriented Since 1998",
-  taglineZh: "工业水泵制造商 · 1998年专注出口",
+  facts: {
+    manufacturingExperience: "30+ years",
+    pumpTechnologySince: "1995",
+    inventionPatents: "10+",
+    facilityArea: "140,000+ m2",
+    employees: "250+",
+    technicalTeam: "60+",
+    markets: "20+",
+  },
+  tagline: "Stainless Steel Centrifugal Pump Manufacturer",
+  taglineZh: "专业不锈钢离心泵制造商",
 };
 
 export const factoryStats = [
-  { value: "27", suffix: "Years", label: "Manufacturing Experience", labelZh: "制造经验" },
-  { value: "68,000", suffix: "m²", label: "Production Facility", labelZh: "生产基地" },
-  { value: "180,000", suffix: "+", label: "Annual Pump Output", labelZh: "年产水泵" },
-  { value: "75", suffix: "+", label: "Export Destinations", labelZh: "出口国家" },
+  { value: "30+", suffix: "Years", label: "Manufacturing Experience", labelZh: "制造经验" },
+  { value: "140,000+", suffix: "m2", label: "Production Facility", labelZh: "生产基地" },
+  { value: "250+", suffix: "", label: "Employees", labelZh: "员工" },
+  { value: "20+", suffix: "", label: "Countries & Regions", labelZh: "覆盖国家和地区" },
 ];
 
 export const certifications = [
   { name: "ISO 9001:2015", description: "Quality Management System" },
   { name: "ISO 14001:2015", description: "Environmental Management" },
   { name: "CE", description: "EU Machinery Directive" },
-  { name: "GS", description: "German Safety Certification" },
-  { name: "EAC", description: "Eurasian Conformity" },
-  { name: "GB/T 5657", description: "Centrifugal Pump Standard" },
+  { name: "CCC", description: "China Compulsory Certification" },
+];
+
+export const companyPatentPortfolio = [
+  {
+    id: "cn",
+    title: "CHINA INVENTION PATENT",
+    sub: "STAMPED CENTRIFUGAL PUMP TECHNOLOGY",
+    patentNo: "ZL 961 02777.0",
+    description: "The CYB stainless steel stamped centrifugal pump was successfully developed in 1995.",
+    img: "/images/about/us-patent-2.png",
+  },
+  {
+    id: "us",
+    title: "UNITED STATES PATENT",
+    sub: "INTERNATIONAL PCT PORTFOLIO",
+    patentNo: "International patent protection",
+    description: "The company holds invention patent rights in the United States for its stamped centrifugal pump technology.",
+    img: "/images/about/us-patent.png",
+  },
+  {
+    id: "ca",
+    title: "CANADIAN PATENT",
+    sub: "INTERNATIONAL PCT PORTFOLIO",
+    patentNo: "International patent protection",
+    description: "The company holds invention patent rights in Canada for its stamped centrifugal pump technology.",
+    img: "/images/about/ca-patent.png",
+  },
+  {
+    id: "au",
+    title: "AUSTRALIAN PATENT",
+    sub: "INTERNATIONAL PCT PORTFOLIO",
+    patentNo: "International patent protection",
+    description: "The company holds invention patent rights in Australia for its stamped centrifugal pump technology.",
+    img: "/images/about/au-patent.png",
+  },
+  {
+    id: "eu",
+    title: "EUROPEAN PATENT PORTFOLIO",
+    sub: "13 EUROPEAN COUNTRIES",
+    patentNo: "International patent protection",
+    description: "The company holds invention patent rights across 13 European countries for its stamped centrifugal pump technology.",
+    img: "/images/about/eu-patent.png",
+  },
+];
+
+export const companyTimeline = [
+  { year: "1994", title: "Company Founded", desc: "Guangdong Yongli Pump Industry Co., Ltd. was established and the Yuehua brand was registered." },
+  { year: "1995", title: "GZA Series Commercialized", desc: "The GZA stainless steel centrifugal pump using stamped technology entered mass production and secured three international PCT invention patents." },
+  { year: "1996", title: "First Press-Welded Centrifugal Pump", desc: "The company's founders developed China's first press-welded centrifugal pump." },
+  { year: "1998", title: "WB and SZ Series", desc: "The WB and SZ pump series were developed and received domestic invention and utility-model patents." },
+  { year: "2000", title: "Multistage Product Expansion", desc: "The DL1-10, DW, and YDL series were developed to expand the stainless steel pump portfolio." },
+  { year: "2005", title: "WB2 Dual-Stage Pump", desc: "The WB2 dual-stage pump was developed and received the Guangdong Excellent Patent Award." },
+  { year: "2009", title: "BK and BB Series", desc: "The BK and BB series were developed with additional domestic invention and utility-model patents." },
+  { year: "2011", title: "GD and WQ Series", desc: "The GD pipeline centrifugal pump and WQ stainless steel centrifugal pump series were developed." },
+  { year: "2018", title: "DW Product Development", desc: "The DW(D) and DW(Z) horizontal stainless steel centrifugal pump series were developed." },
+  { year: "2022", title: "Continued Product Innovation", desc: "Research expanded into large-flow vertical multistage, single-stage, and inline stainless steel centrifugal pumps." },
 ];
 
 export const productionCapacity = [
@@ -57,7 +119,7 @@ export const productionCapacity = [
 export const exportCapabilities = [
   {
     title: "Trade Terms",
-    items: ["EXW Ningbo", "FOB Ningbo / Shanghai", "CIF / CIP worldwide", "DDP on request"],
+    items: ["EXW Yangjiang", "FOB on request", "CIF / CIP worldwide", "DDP on request"],
   },
   {
     title: "Payment Terms",
