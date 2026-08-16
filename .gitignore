@@ -1,1 +1,14 @@
-node_modules
+# dependencies
+node_modules/
+
+# Next.js build
+.next/
+
+# Vercel
+.vercel/
+
+# local env files
+.env*.local
+
+# debug logs
+npm-debug.log*
