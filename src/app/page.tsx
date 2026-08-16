@@ -48,8 +48,8 @@ export default function HomePage() {
   ];
 
   const carouselSlides = [
-    { id: 1, img: "/images/hero-carousel-1.png", tag: "PRECISION MANUFACTURING", title: `${company.facts.facilityArea} Advanced Manufacturing Base` },
-    { id: 2, img: "/images/hero-carousel-2.png", tag: "PATENTED TECHNOLOGY", title: "Precision Stamping & Welding Lines" }
+    { id: 1, img: "/images/hero-carousel-1.webp", tag: "PRECISION MANUFACTURING", title: `${company.facts.facilityArea} Advanced Manufacturing Base` },
+    { id: 2, img: "/images/hero-carousel-2.webp", tag: "PATENTED TECHNOLOGY", title: "Precision Stamping & Welding Lines" }
   ];
 
   useEffect(() => {
@@ -181,10 +181,10 @@ export default function HomePage() {
           <div className="mt-16">
             <div className="grid grid-cols-4 gap-3">
               {[
-                { name: "US", img: "/images/about/us-patent.png" },
-                { name: "CA", img: "/images/about/ca-patent.png" },
-                { name: "EU", img: "/images/about/eu-patent.png" },
-                { name: "AU", img: "/images/about/au-patent.png" },
+                { name: "US", img: "/images/about/us-patent.webp" },
+                { name: "CA", img: "/images/about/ca-patent.webp" },
+                { name: "EU", img: "/images/about/eu-patent.webp" },
+                { name: "AU", img: "/images/about/au-patent.webp" },
               ].map((item) => (
                 <div key={item.name} className="text-center cursor-zoom-in" onClick={() => { setModalImage(item.img); setShowGzaModal(true); setScale(1); setPosition({ x: 0, y: 0 }); }}>
                   <div className="bg-white rounded-lg p-1.5 mb-1.5 aspect-[3/4] flex items-center justify-center overflow-hidden shadow-sm border border-slate-100 hover:shadow-md transition-shadow">

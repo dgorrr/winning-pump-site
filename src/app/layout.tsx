@@ -36,13 +36,13 @@ export const metadata: Metadata = {
     description:
       "China-based manufacturer of stainless steel centrifugal, submersible, booster, and industrial water pumps for global B2B buyers.",
     locale: "en_US",
-    images: [{ url: "/images/hero-carousel-1.png", alt: "Winning Pumps manufacturing facility" }],
+    images: [{ url: "/images/hero-carousel-1.webp", alt: "Winning Pumps manufacturing facility" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Winning Pumps | Professional Water Pump Manufacturer",
     description: "China-based manufacturer of industrial water pumps for global B2B buyers.",
-    images: ["/images/hero-carousel-1.png"],
+    images: ["/images/hero-carousel-1.webp"],
   },
   robots: { index: true, follow: true },
 };

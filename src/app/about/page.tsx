@@ -110,7 +110,7 @@ Pump Technology
               <div className="absolute inset-0 bg-blue-500/10 blur-3xl rounded-full" />
               <div className="relative w-full max-w-lg flex flex-col items-center">
                 <img
-                  src="/images/products/gza-s.png"
+                  src="/images/products/gza-s.webp"
                   alt="GZA(S) Stainless Steel Pump"
                   className="w-full object-contain drop-shadow-2xl scale-[1.35]"
                 />

@@ -48,7 +48,7 @@ export const companyPatentPortfolio = [
     sub: "STAMPED CENTRIFUGAL PUMP TECHNOLOGY",
     patentNo: "ZL 961 02777.0",
     description: "The CYB stainless steel stamped centrifugal pump was successfully developed in 1995.",
-    img: "/images/about/us-patent-2.png",
+    img: "/images/about/us-patent-2.webp",
   },
   {
     id: "us",
@@ -56,7 +56,7 @@ export const companyPatentPortfolio = [
     sub: "INTERNATIONAL PCT PORTFOLIO",
     patentNo: "International patent protection",
     description: "The company holds invention patent rights in the United States for its stamped centrifugal pump technology.",
-    img: "/images/about/us-patent.png",
+    img: "/images/about/us-patent.webp",
   },
   {
     id: "ca",
@@ -64,7 +64,7 @@ export const companyPatentPortfolio = [
     sub: "INTERNATIONAL PCT PORTFOLIO",
     patentNo: "International patent protection",
     description: "The company holds invention patent rights in Canada for its stamped centrifugal pump technology.",
-    img: "/images/about/ca-patent.png",
+    img: "/images/about/ca-patent.webp",
   },
   {
     id: "au",
@@ -72,7 +72,7 @@ export const companyPatentPortfolio = [
     sub: "INTERNATIONAL PCT PORTFOLIO",
     patentNo: "International patent protection",
     description: "The company holds invention patent rights in Australia for its stamped centrifugal pump technology.",
-    img: "/images/about/au-patent.png",
+    img: "/images/about/au-patent.webp",
   },
   {
     id: "eu",
@@ -80,7 +80,7 @@ export const companyPatentPortfolio = [
     sub: "13 EUROPEAN COUNTRIES",
     patentNo: "International patent protection",
     description: "The company holds invention patent rights across 13 European countries for its stamped centrifugal pump technology.",
-    img: "/images/about/eu-patent.png",
+    img: "/images/about/eu-patent.webp",
   },
 ];
 

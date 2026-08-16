@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Product } from "@/data/products";
 
 interface ProductCardProps {
@@ -43,14 +44,16 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         {!imgError && product.image ? (
           <div className="relative h-full w-full flex flex-col items-center justify-center z-10 pt-2">
-            <img
-              src={product.image}
-              alt={product.model}
-              onError={() => setImgError(true)}
-              className="h-44 w-auto object-contain transition-transform duration-500 ease-out group-hover:scale-105"
-              style={{ filter: "contrast(1.02) drop-shadow(0 8px 12px rgba(15, 23, 42, 0.08))" }}
-              loading="lazy"
-            />
+            <Image
+ src={product.image}
+ alt={product.model}
+ width={400}
+ height={300}
+ onError={() => setImgError(true)}
+ className="h-44 w-auto object-contain transition-transform duration-500 ease-out group-hover:scale-105"
+ style={{ filter: "contrast(1.02) drop-shadow(0 8px 12px rgba(15, 23, 42, 0.08))" }}
+ loading="lazy"
+/>
             <div className="w-32 h-1.5 bg-slate-900/10 blur-[3px] rounded-full mt-1 transition-transform duration-500 group-hover:scale-110"></div>
           </div>
         ) : (

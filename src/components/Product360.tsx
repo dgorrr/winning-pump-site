@@ -18,7 +18,7 @@ export default function Product360() {
 
       {/* @ts-ignore */}
       <model-viewer
-      loading="eager"
+      loading="lazy"
 reveal="auto"
 disable-zoom
         src="/models/gza-pump.glb"

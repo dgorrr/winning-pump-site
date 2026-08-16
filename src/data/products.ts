@@ -33,7 +33,7 @@ export const products: Product[] = [
     "Municipal Wastewater Treatment",
     "Industrial Process Wastewater"
   ],
-  image: "/images/products/aswq-d.png"
+  image: "/images/products/aswq-d.webp"
 },
 
  // ==================== BB 系列 ====================
@@ -55,7 +55,7 @@ export const products: Product[] = [
   "Industrial Process Wastewater",
   "Fire Fighting System"
 ],
-  image: "/images/products/bb.png"
+  image: "/images/products/bb.webp"
 },
 
 // ==================== BK-G 系列 ====================
@@ -76,7 +76,7 @@ export const products: Product[] = [
   "Industrial Process Wastewater",
   "Fire Fighting System"
 ],
-  image: "/images/products/bk-g.png"
+  image: "/images/products/bk-g.webp"
 },
 
 // ==================== BK-IQ 系列 ====================
@@ -97,7 +97,7 @@ export const products: Product[] = [
   "Industrial Process Wastewater",
   "Fire Fighting System"
 ],
-  image: "/images/products/bk-iq.png"
+  image: "/images/products/bk-iq.webp"
 },
 
 // ==================== BWQ-G 系列 ====================
@@ -116,7 +116,7 @@ export const products: Product[] = [
     "Municipal Wastewater Treatment",
     "Industrial Process Wastewater"
   ],
-  image: "/images/products/bwq-g.png"
+  image: "/images/products/bwq-g.webp"
 },
 
 // ==================== BZ 系列 ====================
@@ -137,7 +137,7 @@ export const products: Product[] = [
     "Fire Fighting System",
     "Industrial Process Wastewater"
   ],
-  image: "/images/products/bz.png"
+  image: "/images/products/bz.webp"
 },
 
 // DW 系列
@@ -161,7 +161,7 @@ export const products: Product[] = [
   "Industrial Process Wastewater",
   "Agricultural & Irrigation"            // ← 新增
 ],
-  image: "/images/products/dw.png"
+  image: "/images/products/dw.webp"
 },
 
 {
@@ -184,7 +184,7 @@ export const products: Product[] = [
   "Industrial Process Wastewater",
   "Agricultural & Irrigation"            // ← 新增
 ],
-  image: "/images/products/dwd.png"
+  image: "/images/products/dwd.webp"
 },
 
 {
@@ -207,7 +207,7 @@ export const products: Product[] = [
   "Industrial Process Wastewater",
   "Agricultural & Irrigation"            // ← 新增
 ],
-  image: "/images/products/dws.png"
+  image: "/images/products/dws.webp"
 },
 
 {
@@ -230,7 +230,7 @@ export const products: Product[] = [
   "Industrial Process Wastewater",
   "Agricultural & Irrigation"            // ← 新增
 ],
-  image: "/images/products/dwk.png"
+  image: "/images/products/dwk.webp"
 },
 
 {
@@ -253,7 +253,7 @@ export const products: Product[] = [
   "Industrial Process Wastewater",
   "Agricultural & Irrigation"            // ← 新增
 ],
-  image: "/images/products/dw-pc.png"
+  image: "/images/products/dw-pc.webp"
 },
 
 {
@@ -276,7 +276,7 @@ export const products: Product[] = [
   "Industrial Process Wastewater",
   "Agricultural & Irrigation"            // ← 新增
 ],
-  image: "/images/products/dws-pc.png"
+  image: "/images/products/dws-pc.webp"
 },
 
 {
@@ -299,7 +299,7 @@ export const products: Product[] = [
   "Industrial Process Wastewater",
   "Agricultural & Irrigation"            // ← 新增
 ],
-  image: "/images/products/dw-iq.png"
+  image: "/images/products/dw-iq.webp"
 },
 
 // ==================== DL 系列 ====================
@@ -322,7 +322,7 @@ export const products: Product[] = [
     "Swimming Pool & Water Features",
     "Industrial Process Wastewater"
   ],
-  image: "/images/products/dl1-dl5.png"
+  image: "/images/products/dl1-dl5.webp"
 },
 
 {
@@ -344,7 +344,7 @@ export const products: Product[] = [
     "Swimming Pool & Water Features",
     "Industrial Process Wastewater"
   ],
-  image: "/images/products/dl8-dl20.png"
+  image: "/images/products/dl8-dl20.webp"
 },
 
 {
@@ -366,7 +366,7 @@ export const products: Product[] = [
     "Swimming Pool & Water Features",
     "Industrial Process Wastewater"
   ],
-  image: "/images/products/dl32-dl90.png"
+  image: "/images/products/dl32-dl90.webp"
 },
 
 
@@ -389,7 +389,7 @@ export const products: Product[] = [
   "Industrial Process Wastewater",
   "Fire Fighting System"
 ],
-  image: "/images/products/dza-s.png"
+  image: "/images/products/dza-s.webp"
 },
 
 {
@@ -409,7 +409,7 @@ export const products: Product[] = [
     "Fire Fighting System",
     "Industrial Process Wastewater"
   ],
-  image: "/images/products/dza-s-cover.png"
+  image: "/images/products/dza-s-cover.webp"
 },
 {
   id: "gza-s",
@@ -429,7 +429,7 @@ export const products: Product[] = [
   "Industrial Process Wastewater",
   "Fire Fighting System"
 ],
-  image: "/images/products/gza-s.png"
+  image: "/images/products/gza-s.webp"
 },
 
 {
@@ -449,7 +449,7 @@ export const products: Product[] = [
     "Fire Fighting System",
     "Industrial Process Wastewater"
   ],
-  image: "/images/products/gza-s-g.png"
+  image: "/images/products/gza-s-g.webp"
 },
 
 // ==================== GD 系列 ====================
@@ -468,7 +468,7 @@ export const products: Product[] = [
     "Building Water Supply & Boosting",
     "Water Cooling & Circulation"
   ],
-  image: "/images/products/gd.png"
+  image: "/images/products/gd.webp"
 },
 
 // ==================== LW 系列 ====================
@@ -487,7 +487,7 @@ export const products: Product[] = [
     "Municipal Wastewater Treatment",
     "Industrial Process Wastewater"
   ],
-  image: "/images/products/lw.png"
+  image: "/images/products/lw.webp"
 },
 
 
@@ -511,7 +511,7 @@ export const products: Product[] = [
   "Deep Well & Solar Pumping",
   "Fire Fighting System"
 ],
-  image: "/images/products/sz.png"
+  image: "/images/products/sz.webp"
 },
 
 {
@@ -533,7 +533,7 @@ export const products: Product[] = [
   "Deep Well & Solar Pumping",
   "Fire Fighting System"
 ],
-  image: "/images/products/sz-pc.png"
+  image: "/images/products/sz-pc.webp"
 },
 
 {
@@ -555,7 +555,7 @@ export const products: Product[] = [
   "Deep Well & Solar Pumping",
   "Fire Fighting System"
 ],
-  image: "/images/products/sz-iq.png"
+  image: "/images/products/sz-iq.webp"
 },
 
 
@@ -575,7 +575,7 @@ export const products: Product[] = [
     "Building Water Supply & Boosting",
     "Water Cooling & Circulation"
   ],
-  image: "/images/products/td.png"
+  image: "/images/products/td.webp"
 },
 
 {
@@ -594,7 +594,7 @@ export const products: Product[] = [
     "Water Cooling & Circulation",
     "Washing & Cleaning Systems"
   ],
-  image: "/images/products/tdw.png"
+  image: "/images/products/tdw.webp"
 },
 
 // ==================== TP 系列 ====================
@@ -614,7 +614,7 @@ export const products: Product[] = [
     "Fire Fighting System",
     "Industrial Process Wastewater"
   ],
-  image: "/images/products/tp.png"
+  image: "/images/products/tp.webp"
 },
 
 
@@ -640,7 +640,7 @@ export const products: Product[] = [
   "Agricultural & Irrigation",           // ← 新增
   "Water Cooling & Circulation"          // ← 新增
 ],
-  image: "/images/products/wb.png"
+  image: "/images/products/wb.webp"
 },
 
 {
@@ -660,7 +660,7 @@ export const products: Product[] = [
     "Food & Beverage Processing",
     "Swimming Pool & Water Features"
   ],
-  image: "/images/products/wb2.png"
+  image: "/images/products/wb2.webp"
 },
 
 {
@@ -683,7 +683,7 @@ export const products: Product[] = [
   "Agricultural & Irrigation",           // ← 新增
   "Water Cooling & Circulation"          // ← 新增
 ],
-  image: "/images/products/wb-pc.png"
+  image: "/images/products/wb-pc.webp"
 },
 
 {
@@ -706,7 +706,7 @@ export const products: Product[] = [
   "Agricultural & Irrigation",           // ← 新增
   "Water Cooling & Circulation"          // ← 新增
 ],
-  image: "/images/products/wb-iq.png"
+  image: "/images/products/wb-iq.webp"
 },
 
 {
@@ -729,7 +729,7 @@ export const products: Product[] = [
   "Agricultural & Irrigation",           // ← 新增
   "Water Cooling & Circulation"          // ← 新增
 ],
-  image: "/images/products/wb400.png"
+  image: "/images/products/wb400.webp"
 },
 
 // ==================== WQ 系列（污水切割/潜污泵） ====================
@@ -749,7 +749,7 @@ export const products: Product[] = [
   "Industrial Process Wastewater",
   "Deep Well & Solar Pumping"
 ],
-  image: "/images/products/wq-qg.png"
+  image: "/images/products/wq-qg.webp"
 },
 
 {
@@ -768,7 +768,7 @@ export const products: Product[] = [
   "Industrial Process Wastewater",
   "Deep Well & Solar Pumping"
 ],
-  image: "/images/products/wq-g.png"
+  image: "/images/products/wq-g.webp"
 },
 
 {
@@ -787,7 +787,7 @@ export const products: Product[] = [
   "Industrial Process Wastewater",
   "Deep Well & Solar Pumping"
 ],
-  image: "/images/products/wqg.png"
+  image: "/images/products/wqg.webp"
 },
 
 {
@@ -806,7 +806,7 @@ export const products: Product[] = [
   "Industrial Process Wastewater",
   "Deep Well & Solar Pumping"
 ],
-  image: "/images/products/wq-cg.png"
+  image: "/images/products/wq-cg.webp"
 },
 
 {
@@ -825,7 +825,7 @@ export const products: Product[] = [
   "Industrial Process Wastewater",
   "Deep Well & Solar Pumping"
 ],
-  image: "/images/products/wq-c.png"
+  image: "/images/products/wq-c.webp"
 },
 
 {
@@ -844,7 +844,7 @@ export const products: Product[] = [
   "Industrial Process Wastewater",
   "Deep Well & Solar Pumping"
 ],
-  image: "/images/products/wq-bg.png"
+  image: "/images/products/wq-bg.webp"
 },
 
 {
@@ -863,7 +863,7 @@ export const products: Product[] = [
   "Industrial Process Wastewater",
   "Deep Well & Solar Pumping"
 ],
-  image: "/images/products/wq-b.png"
+  image: "/images/products/wq-b.webp"
 },
 
 {
@@ -882,7 +882,7 @@ export const products: Product[] = [
   "Industrial Process Wastewater",
   "Deep Well & Solar Pumping"
 ],
-  image: "/images/products/wq.png"
+  image: "/images/products/wq.webp"
 },
 
 
@@ -903,7 +903,7 @@ export const products: Product[] = [
     "Washing & Cleaning Systems",
     "Water Cooling & Circulation"
   ],
-  image: "/images/products/ydl.png"
+  image: "/images/products/ydl.webp"
 },
 
 // ==================== ZW 系列 ====================
@@ -922,7 +922,7 @@ export const products: Product[] = [
     "Municipal Wastewater Treatment",
     "Industrial Process Wastewater"
   ],
-  image: "/images/products/zw.png"
+  image: "/images/products/zw.webp"
 },
 
 ];

@@ -36,3 +36,6 @@ yarn-error.log*
 next-env.d.ts
 .vercel
 public/models/*.glb
+# 3D models
+public/models/*.glb
+public/models/*.gltf
