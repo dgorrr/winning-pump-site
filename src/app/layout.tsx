@@ -13,11 +13,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.winningpump.com"),
   applicationName: "Winning Pumps",
   title: {
-    default: "Winning Pumps | Professional Water Pump Manufacturer",
+    default: "Stainless Steel Centrifugal Pump Manufacturer | Winning Pumps",
     template: "%s | Winning Pumps",
   },
   description:
-    "Winning Pumps is a China-based manufacturer of stainless steel centrifugal, submersible, booster, and industrial water pumps for global B2B buyers. OEM and ODM support available.",
+    "Winning Pumps is a Chinese manufacturer of stamped stainless steel centrifugal pumps, offering reliable OEM/ODM solutions for distributors, engineering companies and global water applications.",
   keywords: [
     "water pump manufacturer",
     "stainless steel centrifugal pump",
@@ -32,15 +32,15 @@ export const metadata: Metadata = {
     type: "website",
     url: "/",
     siteName: "Winning Pumps",
-    title: "Winning Pumps | Professional Water Pump Manufacturer",
+    title: "Stainless Steel Centrifugal Pump Manufacturer | Winning Pumps",
     description:
-      "China-based manufacturer of stainless steel centrifugal, submersible, booster, and industrial water pumps for global B2B buyers.",
+  "Winning Pumps is a Chinese manufacturer of stamped stainless steel centrifugal pumps, offering reliable OEM/ODM solutions for distributors, engineering companies and global water applications.",
     locale: "en_US",
     images: [{ url: "/images/hero-carousel-1.webp", alt: "Winning Pumps manufacturing facility" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Winning Pumps | Professional Water Pump Manufacturer",
+    title: "Stainless Steel Centrifugal Pump Manufacturer | Winning Pumps",
     description: "China-based manufacturer of industrial water pumps for global B2B buyers.",
     images: ["/images/hero-carousel-1.webp"],
   },
