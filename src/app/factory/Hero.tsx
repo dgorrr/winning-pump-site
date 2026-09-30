@@ -6,7 +6,7 @@ import { company } from "@/data/company";
 
 
 const slides = [
-"/images/factory/hero/production.jpg",
+"/images/factory/hero/production.JPG",
   "/images/factory/hero/factory-hero.jpg",
   "/images/factory/hero/storage.jpg",
 
