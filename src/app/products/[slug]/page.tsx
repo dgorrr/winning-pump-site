@@ -143,53 +143,11 @@ export default async function ProductDetailPage({
       : `${siteUrl}${product.image}`
     : undefined;
 
-  const productSchema = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: product.name,
-    image: productImageUrl ? [productImageUrl] : undefined,
-    description: product.description,
-    sku: product.id,
-    mpn: product.model,
-    brand: {
-      "@type": "Brand",
-      name: "Winning Pumps",
-    },
-    manufacturer: {
-      "@type": "Organization",
-      name: "Guangdong Winning Pumps Industrial Co., Ltd.",
-      url: siteUrl,
-    },
-    material: product.material,
-    category: product.category,
-    additionalProperty: [
-      {
-        "@type": "PropertyValue",
-        name: "Flow",
-        value: product.flow,
-      },
-      {
-        "@type": "PropertyValue",
-        name: "Head",
-        value: product.head,
-      },
-      {
-        "@type": "PropertyValue",
-        name: "Power",
-        value: product.power,
-      },
-    ],
-    url: productUrl,
-  };
+
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productSchema),
-        }}
-      />
+      
 
       <BreadcrumbSchema
         items={[
