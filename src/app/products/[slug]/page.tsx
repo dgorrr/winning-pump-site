@@ -13,17 +13,27 @@ const applicationImageMap: Record<string, string> = {
   "Wastewater & Sewage": "/images/applications/municipal-treatment.png",
   "Industrial Process": "/images/applications/industrial-process.png",
   "Water Supply & Boosting": "/images/applications/building-boosting.png",
-  "Municipal Wastewater Treatment": "/images/applications/municipal-treatment.png",
-  "Basement & Underground Drainage": "/images/applications/basement-lifting.png",
-  "Industrial Process Wastewater": "/images/applications/industrial-process.png",
-  "Building Water Supply & Boosting": "/images/applications/building-boosting.png",
-  "Agricultural & Irrigation": "/images/applications/agricultural-irrigation.png",
+  "Municipal Wastewater Treatment":
+    "/images/applications/municipal-treatment.png",
+  "Basement & Underground Drainage":
+    "/images/applications/basement-lifting.png",
+  "Industrial Process Wastewater":
+    "/images/applications/industrial-process.png",
+  "Building Water Supply & Boosting":
+    "/images/applications/building-boosting.png",
+  "Agricultural & Irrigation":
+    "/images/applications/agricultural-irrigation.png",
   "Fire Fighting System": "/images/applications/fire-fighting.png",
-  "Swimming Pool & Water Features": "/images/applications/swimming-pool.png",
-  "Deep Well & Solar Pumping": "/images/applications/deep-well-solar.png",
-  "Food & Beverage Processing": "/images/applications/food-beverage-processing.png",
-  "Washing & Cleaning Systems": "/images/applications/washing-cleaning-systems.png",
-  "Water Cooling & Circulation": "/images/applications/water-cooling-circulation.png",
+  "Swimming Pool & Water Features":
+    "/images/applications/swimming-pool.png",
+  "Deep Well & Solar Pumping":
+    "/images/applications/deep-well-solar.png",
+  "Food & Beverage Processing":
+    "/images/applications/food-beverage-processing.png",
+  "Washing & Cleaning Systems":
+    "/images/applications/washing-cleaning-systems.png",
+  "Water Cooling & Circulation":
+    "/images/applications/water-cooling-circulation.png",
 };
 
 function findProduct(slug: string) {
@@ -285,12 +295,15 @@ export default async function ProductDetailPage({
 
               <div className="mt-3 flex flex-wrap gap-2">
                 {product.applications.map((application) => (
-                  <span
+                  <Link
                     key={application}
-                    className="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-700"
+                    href={`/products?application=${encodeURIComponent(
+                      application
+                    )}`}
+                    className="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-700 transition-colors hover:bg-brand-50 hover:text-brand-700"
                   >
                     {application}
-                  </span>
+                  </Link>
                 ))}
               </div>
             </section>
