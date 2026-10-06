@@ -54,18 +54,20 @@ export async function generateMetadata({
   const product = findProduct(slug);
 
   if (!product) {
-    return {
-      title: "Product Not Found | Winning Pumps",
-      description: "The requested product could not be found.",
-    };
-  }
+  return {
+    title: "Product Not Found",
+    description: "The requested product could not be found.",
+  };
+}
 
   const siteUrl =
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.winningpump.com";
 
-  const pageTitle = product.name.includes(product.model)
-    ? `${product.name} | Winning Pumps`
-    : `${product.model} ${product.name} | Winning Pumps`;
+const pageTitle = product.name.includes(product.model)
+  ? product.name
+  : `${product.model} ${product.name}`;
+
+const socialTitle = `${pageTitle} | Winning Pumps`;
 
   const pageDescription =
     `${product.description} Flow: ${product.flow}. Head: ${product.head}. ` +
@@ -79,17 +81,17 @@ export async function generateMetadata({
       : `${siteUrl}${product.image}`
     : undefined;
 
-  return {
-    title: pageTitle,
+ return {
+  title: pageTitle,
+  description: pageDescription,
+  alternates: {
+    canonical: canonicalUrl,
+  },
+  openGraph: {
+    type: "website",
+    url: canonicalUrl,
+    title: socialTitle,
     description: pageDescription,
-    alternates: {
-      canonical: canonicalUrl,
-    },
-    openGraph: {
-      type: "website",
-      url: canonicalUrl,
-      title: pageTitle,
-      description: pageDescription,
       siteName: "Winning Pumps",
       locale: "en_US",
       images: productImageUrl
@@ -102,11 +104,11 @@ export async function generateMetadata({
         : undefined,
     },
     twitter: {
-      card: "summary_large_image",
-      title: pageTitle,
-      description: pageDescription,
-      images: productImageUrl ? [productImageUrl] : undefined,
-    },
+  card: "summary_large_image",
+  title: socialTitle,
+  description: pageDescription,
+  images: productImageUrl ? [productImageUrl] : undefined,
+},
   };
 }
 
