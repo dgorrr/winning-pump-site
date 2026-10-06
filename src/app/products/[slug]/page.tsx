@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ImageLightbox from "@/components/ImageLightbox";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import { products } from "@/data/products";
 
 type ProductPageProps = {
@@ -169,43 +170,6 @@ export default async function ProductDetailPage({
     url: productUrl,
   };
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: siteUrl,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Products",
-        item: `${siteUrl}/products`,
-      },
-      ...(product.category
-        ? [
-            {
-              "@type": "ListItem",
-              position: 3,
-              name: product.category,
-              item: `${siteUrl}/products?category=${encodeURIComponent(
-                product.category
-              )}`,
-            },
-          ]
-        : []),
-      {
-        "@type": "ListItem",
-        position: product.category ? 4 : 3,
-        name: product.model,
-        item: productUrl,
-      },
-    ],
-  };
-
   return (
     <>
       <script
@@ -215,11 +179,12 @@ export default async function ProductDetailPage({
         }}
       />
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
-        }}
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: "/" },
+          { name: "Products", url: "/products" },
+          { name: product.model },
+        ]}
       />
 
       <article className="mx-auto max-w-6xl px-6 pb-12 pt-36">

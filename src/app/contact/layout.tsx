@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Contact Pump Manufacturer & Engineering Team",
@@ -29,5 +30,15 @@ export default function ContactLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return children;
+  return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: "/" },
+          { name: "Contact" },
+        ]}
+      />
+      {children}
+    </>
+  );
 }
