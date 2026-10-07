@@ -223,7 +223,7 @@ export default async function ProductDetailPage({
             <dl className="mt-8 grid grid-cols-2 gap-4">
               {[
                 ["Flow Range", product.flow],
-                ["Max Head", product.head],
+                ["Head Range", product.head],
                 ["Power Range", product.power],
                 ["Material", product.material],
               ].map(([label, value]) => (
