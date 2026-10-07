@@ -290,7 +290,7 @@ export default function HomePage() {
                   </div>
 
                   <div className="font-bold text-slate-900">
-                    SS304 / SS316
+                    SS304 / SS316L
                   </div>
                 </div>
               </div>
