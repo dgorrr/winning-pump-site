@@ -46,7 +46,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           <div className="relative h-full w-full flex flex-col items-center justify-center z-10 pt-2">
             <Image
  src={product.image}
- alt={product.model}
+ alt={`${product.name} product image`}
  width={400}
  height={300}
  onError={() => setImgError(true)}

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import ImageLightbox from "@/components/ImageLightbox";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import { products } from "@/data/products";
+import { productSeoMetadata } from "../seoMetadata";
 
 type ProductPageProps = {
   params: Promise<{ slug: string }>;
@@ -46,70 +47,66 @@ export function generateStaticParams() {
   return products.map((product) => ({ slug: product.id }));
 }
 
-export async function generateMetadata({
-  params,
-}: ProductPageProps): Promise<Metadata> {
-  const { slug } = await params;
-
-  const product = findProduct(slug);
-
-  if (!product) {
-  return {
-    title: "Product Not Found",
-    description: "The requested product could not be found.",
-  };
-}
-
-  const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.winningpump.com";
-
-const pageTitle = product.name.includes(product.model)
-  ? product.name
-  : `${product.model} ${product.name}`;
-
-const socialTitle = `${pageTitle} | Winning Pumps`;
-
-  const pageDescription =
-    `${product.description} Flow: ${product.flow}. Head: ${product.head}. ` +
-    `Material: ${product.material}.`;
-
-  const canonicalUrl = `${siteUrl}/products/${product.id}`;
-
-  const productImageUrl = product.image
-    ? product.image.startsWith("http")
-      ? product.image
-      : `${siteUrl}${product.image}`
-    : undefined;
-
- return {
-  title: pageTitle,
-  description: pageDescription,
-  alternates: {
-    canonical: canonicalUrl,
-  },
-  openGraph: {
-    type: "website",
-    url: canonicalUrl,
-    title: socialTitle,
-    description: pageDescription,
-      siteName: "Winning Pumps",
-      locale: "en_US",
-      images: productImageUrl
-        ? [
-            {
-              url: productImageUrl,
-              alt: `${product.name} - Winning Pumps`,
-            },
-          ]
-        : undefined,
-    },
-    twitter: {
-  card: "summary_large_image",
-  title: socialTitle,
-  description: pageDescription,
-  images: productImageUrl ? [productImageUrl] : undefined,
-},
-  };
+export async function generateMetadata({
+  params,
+}: ProductPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const product = findProduct(slug);
+
+  if (!product) {
+    return {
+      title: "Product Not Found",
+      description: "The requested product could not be found.",
+      robots: { index: false, follow: false },
+    };
+  }
+
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.winningpump.com";
+  const seo = productSeoMetadata[product.id];
+  const pageTitle =
+    seo?.title ??
+    (product.name.includes(product.model)
+      ? product.name
+      : `${product.model} ${product.name}`);
+  const pageDescription = seo?.description ?? product.description;
+  const canonicalUrl = `${siteUrl}/products/${product.id}`;
+  const productImageUrl = product.image
+    ? product.image.startsWith("http")
+      ? product.image
+      : `${siteUrl}${product.image}`
+    : undefined;
+  const socialTitle = `${pageTitle} | Winning Pumps`;
+
+  return {
+    title: pageTitle,
+    description: pageDescription,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      type: "website",
+      url: canonicalUrl,
+      title: socialTitle,
+      description: pageDescription,
+      siteName: "Winning Pumps",
+      locale: "en_US",
+      images: productImageUrl
+        ? [
+            {
+              url: productImageUrl,
+              alt: `${product.name} - Winning Pumps`,
+            },
+          ]
+        : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: socialTitle,
+      description: pageDescription,
+      images: productImageUrl ? [productImageUrl] : undefined,
+    },
+  };
 }
 
 export default async function ProductDetailPage({

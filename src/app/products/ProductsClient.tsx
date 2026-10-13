@@ -119,13 +119,13 @@ const handleInquirySubmit = async (e: React.FormEvent) => {
         {/* 顶部高端大厂风头部 */}
         <div className="mb-10">
           <span className="text-xs font-mono font-bold tracking-widest text-brand-600 uppercase bg-brand-50 px-2.5 py-1 rounded">
-            INDUSTRIAL PUMP SOLUTIONS
+            PRODUCT CATALOG
           </span>
           <h1 className="text-5xl font-black tracking-tight text-slate-900 mt-3 sm:text-4xl" style={{ color: 'initial' }}>
-            Explore Our Pump Solutions
+            Industrial Pump Product Catalog
           </h1>
           <p className="text-slate-500 mt-1.5 text-sm max-w-2xl">
-            Engineered pump solutions for industrial, commercial, and custom OEM applications.
+            Browse centrifugal, multistage, end-suction, inline and sewage pump ranges. Review available model information and request a quote for your application.
           </p>
         </div>
 
@@ -136,7 +136,7 @@ const handleInquirySubmit = async (e: React.FormEvent) => {
             <label className="block text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Search Model or Keyword</label>
             <input
               type="text"
-              placeholder="e.g., WB, GZA, CDL, Vertical Multistage..."
+              placeholder="e.g., WB, GZA, DW, Vertical Multistage..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-3 text-sm focus:border-brand-500 focus:bg-white focus:outline-none transition-all"
