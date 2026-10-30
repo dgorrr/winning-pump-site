@@ -25,7 +25,7 @@ const resend = new Resend(apiKey);
 
       from: "onboarding@resend.dev",
 
-      to: "qq727599117@gmail.com",
+      to: "globalmarketing@wpump.cn",
 
       subject: "New Winning Pumps Inquiry",
 

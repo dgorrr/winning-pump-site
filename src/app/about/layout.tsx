@@ -18,11 +18,11 @@ const organizationSchema = {
     addressCountry: "CN",
   },
   telephone: "+86 662 8886888",
-  email: "727599117@qq.com",
+  email: "globalmarketing@wpump.cn",
   contactPoint: {
     "@type": "ContactPoint",
     telephone: "+86 662 8886888",
-    email: "727599117@qq.com",
+    email: "globalmarketing@wpump.cn",
     contactType: "sales",
   },
   areaServed: "Worldwide",
