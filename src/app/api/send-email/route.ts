@@ -23,9 +23,11 @@ const resend = new Resend(apiKey);
 
     const result = await resend.emails.send({
 
-      from: "onboarding@resend.dev",
+      from: "Winning Pumps <inquiry@mail.winningpump.com>",
 
       to: "globalmarketing@wpump.cn",
+
+      replyTo: data.email,
 
       subject: "New Winning Pumps Inquiry",
 
@@ -105,11 +107,14 @@ Winning Pumps Website
     await resend.emails.send({
 
   from:
-  "onboarding@resend.dev",
+  "Winning Pumps <inquiry@mail.winningpump.com>",
 
 
   to:
   data.email,
+
+  replyTo:
+  "globalmarketing@wpump.cn",
 
 
   subject:
