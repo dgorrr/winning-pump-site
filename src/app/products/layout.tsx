@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Industrial Pump Products",
+  title: {
+    default: "Industrial Pump Products",
+    template: "%s | Winning Pumps",
+  },
   description:
     "Explore Winning Pumps' range of stainless steel centrifugal pumps, vertical multistage pumps, pipeline boosters, and submersible sewage pumps for industrial, commercial, and OEM applications.",
   alternates: {
