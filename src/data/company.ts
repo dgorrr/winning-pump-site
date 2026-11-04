@@ -1,10 +1,10 @@
 export const company = {
   brandName: "Winning Pumps",
-  legalName: "Guangdong Yongli Pump Industry Co., Ltd.",
+  legalName: "Guangdong Winning Pumps Industrial Co., Ltd.",
   legalNameZh: "广东永力泵业有限公司",
   founded: 1994,
   location: {
-    address: "Longtoushan Industrial Zone, Beiguan Town, Yangdong District",
+    address: "Industrial Zone, Longtoushan, Beiguan Town, Yangdong District",
     city: "Yangjiang",
     province: "Guangdong Province",
     country: "China",
@@ -85,7 +85,7 @@ export const companyPatentPortfolio = [
 ];
 
 export const companyTimeline = [
-  { year: "1994", title: "Company Founded", desc: "Guangdong Yongli Pump Industry Co., Ltd. was established and the Yuehua brand was registered." },
+  { year: "1994", title: "Company Founded", desc: `${company.legalName} was established and the Yuehua brand was registered.` },
   { year: "1995", title: "GZA Series Commercialized", desc: "The GZA stainless steel centrifugal pump using stamped technology entered mass production and secured three international PCT invention patents." },
   { year: "1996", title: "First Press-Welded Centrifugal Pump", desc: "The company's founders developed China's first press-welded centrifugal pump." },
   { year: "1998", title: "WB and SZ Series", desc: "The WB and SZ pump series were developed and received domestic invention and utility-model patents." },

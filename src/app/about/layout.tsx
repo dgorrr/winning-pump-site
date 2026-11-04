@@ -1,21 +1,22 @@
 import type { Metadata } from "next";
+import { company } from "@/data/company";
 
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Winning Pumps",
-  legalName: "Guangdong Winning Pumps Industrial Co., Ltd.",
+  name: company.brandName,
+  legalName: company.legalName,
+  foundingDate: String(company.founded),
   url: "https://www.winningpump.com",
   description:
     "Guangdong Winning Pumps Industrial Co., Ltd. is a China-based manufacturer of stainless steel centrifugal pumps and industrial water pumping solutions for global B2B buyers.",
   address: {
     "@type": "PostalAddress",
-    streetAddress:
-      "Longtoushan Industrial Zone, BeiGuan Town, Yangdong District",
-    addressLocality: "Yangjiang City",
-    addressRegion: "Guangdong Province",
-    postalCode: "529932",
-    addressCountry: "CN",
+    streetAddress: company.location.address,
+    addressLocality: `${company.location.city} City`,
+    addressRegion: company.location.province,
+    postalCode: company.location.postalCode,
+    addressCountry: company.location.country === "China" ? "CN" : company.location.country,
   },
   telephone: "+86 662 8886888",
   email: "globalmarketing@wpump.cn",
