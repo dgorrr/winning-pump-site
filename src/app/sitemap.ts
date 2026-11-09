@@ -1,8 +1,7 @@
 import type { MetadataRoute } from "next";
 import { products } from "@/data/products";
-
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.winningpump.com";
+import { categoryPages } from "@/data/categoryPages";
+import { SITE_URL } from "@/lib/siteUrl";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
@@ -15,12 +14,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const staticEntries = staticRoutes.map((route) => ({
-    url: `${siteUrl}${route}`,
+    url: `${SITE_URL}${route}`,
   }));
 
   const productEntries = products.map((product) => ({
-    url: `${siteUrl}/products/${product.id}`,
+    url: `${SITE_URL}/products/${product.id}`,
   }));
 
-  return [...staticEntries, ...productEntries];
+  const categoryEntries = categoryPages.map((category) => ({
+    url: `${SITE_URL}/products/${category.slug}`,
+  }));
+
+  return [...staticEntries, ...categoryEntries, ...productEntries];
 }

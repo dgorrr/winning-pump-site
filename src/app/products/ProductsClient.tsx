@@ -2,7 +2,9 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { products, pumpCategories, applicationCategories } from '@/data/products';
+import { categoryPages } from '@/data/categoryPages';
 import ProductCard from '@/components/ProductCard';
+import Link from 'next/link';
 
 type ProductsClientProps = {
   initialAction?: string;
@@ -131,6 +133,21 @@ const handleInquirySubmit = async (e: React.FormEvent) => {
 
         {/* 搜索与多维控制面板 */}
         <div className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm mb-10 space-y-6">
+          <nav aria-label="Static pump category pages">
+            <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-3">Explore Pump Categories</label>
+            <div className="flex flex-wrap gap-2">
+              {categoryPages.map((category) => (
+                <Link
+                  key={category.slug}
+                  href={`/products/${category.slug}`}
+                  className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 transition hover:border-brand-400 hover:text-brand-700"
+                >
+                  {category.name}
+                </Link>
+              ))}
+            </div>
+          </nav>
+
           {/* 搜索框 */}
           <div>
             <label className="block text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Search Model or Keyword</label>
