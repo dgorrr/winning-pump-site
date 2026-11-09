@@ -1,3 +1,5 @@
+import { SITE_URL } from "@/lib/siteUrl";
+
 type BreadcrumbItem = {
   name: string;
   url?: string;
@@ -6,8 +8,6 @@ type BreadcrumbItem = {
 type BreadcrumbSchemaProps = {
   items: BreadcrumbItem[];
 };
-
-const SITE_URL = "https://www.winningpump.com";
 
 export default function BreadcrumbSchema({
   items,
